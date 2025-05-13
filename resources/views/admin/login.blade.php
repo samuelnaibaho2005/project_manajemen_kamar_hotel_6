@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Registrasi</title>
+    <title>Login</title>
 </head>
 <body>
     <div class="container-lg">
         <div class="title">
-            <h1>Registrasi</h1>
-            <h6>Silahkan registrasi sebagai admin</h6>
+            <h1>Login</h1>
+            <h6>Silahkan login sebagai admin</h6>
         </div>
         <div class="form-reg">
             <div class="mb-3 row">
@@ -26,7 +26,7 @@
             </div>
             </div>
         </div>
-        <p>belum punya akun? <a href="">Registrasi</a></p>
+        <p>sudah punya akun? <a href="">Login</a></p>
     </div>
 </body>
 </html>

@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('registrasi', function () {
-    return view('registrasi');
+Route::get('/admin', function () {
+    return view('admin.login');
 });
+
+Route::get('/admin', function () {
+    return view('admin.registrasi');
+});
+ 
