@@ -26,7 +26,7 @@
             </div>
             </div>
         </div>
-        <p>belum punya akun? <a href="">Registrasi</a></p>
+        <p>sudah punya akun? <a href="/admin/login">Login</a></p>
     </div>
 </body>
 </html>
