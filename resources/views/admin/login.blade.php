@@ -27,6 +27,7 @@
             </div>
         </div>
         <p>belum punya akun? <a href="/admin/registrasi">Registrasi</a></p>
+        <button type="submit" class="btn btn-primary">Login</button>
     </div>
 </body>
 </html>

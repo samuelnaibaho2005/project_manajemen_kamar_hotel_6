@@ -16,7 +16,7 @@
             <div class="mb-3 row">
             <label for="IDadmin" class="col-sm-2 col-form-label">ID</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="IDadmin">
+                <input type="number" class="form-control" id="IDadmin">
             </div>
             </div>
             <div class="mb-3 row">
@@ -27,6 +27,7 @@
             </div>
         </div>
         <p>sudah punya akun? <a href="/admin/login">Login</a></p>
+        <button type="submit" class="btn btn-primary">Daftar</button>
     </div>
 </body>
 </html>

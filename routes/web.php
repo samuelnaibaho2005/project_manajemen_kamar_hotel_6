@@ -17,11 +17,11 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/login', function () {
+Route::get('/admin/login', function () {
     return view('admin.login');
 });
 
-Route::get('/registrasi', function () {
+Route::get('/admin/registrasi', function () {
     return view('admin.registrasi');
 });
  
