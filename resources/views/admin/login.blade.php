@@ -13,7 +13,13 @@
             <h6>Silahkan login sebagai admin</h6>
         </div>
 
-        <form action="{{ url('/admin/login') }}" method="POSR">
+        @if ($errors->has('login_gagal'))
+            <div class="alert alert-danger">
+                {{ $errors->first('login_gagal') }}
+            </div>
+        @endif
+
+        <form action="{{ url('/admin/login') }}" method="POST">
         @csrf
         <div class="form-reg">
             <div class="mb-3 row">

@@ -36,9 +36,22 @@ class AuthController extends Controller
 
     //proses login
     public function login(Request $request){
-        $request->validate([
-            'nama_admin'=>'required',
-            'password'=>'required',
+        $credentials = $request->validate([
+            'email'=>'required',
+            'password'=>'required|password',
+        ]);
+
+        $admin = Admin::where('email',$credentials['email'])->first();
+
+        
+
+        if($admin && $credentials['password'] === $admin->password){
+            Auth::login($admin);
+            return redirect('/dashboard');//mengarah ke dashboard
+        }
+
+        return back() -> withErrors([
+            'login_gagal' => 'Email atau Password anda salah',
         ]);
     }
 }
