@@ -12,22 +12,26 @@
             <h1>Login</h1>
             <h6>Silahkan login sebagai admin</h6>
         </div>
+
+        <form action="{{ url('/admin/login') }}" method="POSR">
+        @csrf
         <div class="form-reg">
             <div class="mb-3 row">
-            <label for="IDadmin" class="col-sm-2 col-form-label">ID</label>
+            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="IDadmin">
+                <input type="email" class="form-control" id="inputEmail" name="email" required>
             </div>
             </div>
             <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword">
+                <input type="password" class="form-control" id="inputPassword" name="password" required>
             </div>
             </div>
         </div>
-        <p>belum punya akun? <a href="/admin/registrasi">Registrasi</a></p>
+        <p>belum punya akun? <a href="{{url('/admin/registrasi')}}">Registrasi</a></p>
         <button type="submit" class="btn btn-primary">Login</button>
     </div>
+    </form>
 </body>
 </html>

@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +26,18 @@ Route::get('/admin/registrasi', function () {
     return view('admin.registrasi');
 });
  
+//form registrasi
+Route::get('/admin/registrasi', [AuthController::class, 'showRegister']);//menampilkan form registrasi
+Route::post('/admin/registrasi', [AuthController::class, 'register']);//menyimpan data dari form
+
+//form form
+Route::get('/admin/login', [AuthController::class, 'showLogin']);//menampilkan form login
+Route::post('/admin/login', [AuthController::class, 'login']);//proses authentifikasi
+
+//logout
+Route::get('/admin/logout', [AuthController::class, 'logout'])->middleware('auth');
+
+//dashboard
+Route::ger('/dashboard', function(){
+    return view('admin.dashboard');
+})->middleware('auth');//supaya hanya saat login yang dapat mengakses dashboard

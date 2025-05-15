@@ -12,22 +12,51 @@
             <h1>Registrasi</h1>
             <h6>Silahkan registrasi sebagai admin</h6>
         </div>
+
+        <!-- menampilkan pesan sukses -->
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
+
+        <!-- menampilkan pesan error -->
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
+        <!-- form -->
+        <form action="{{ url('/admin/registrasi') }}" method="POST">
+        @csrf
         <div class="form-reg">
             <div class="mb-3 row">
-            <label for="IDadmin" class="col-sm-2 col-form-label">ID</label>
+            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input type="number" class="form-control" id="IDadmin">
+                <input type="email" class="form-control" id="inputEmail" name="email" required>
+            </div>
+            </div>
+            <div class="mb-3 row">
+            <label for="inputNama" class="col-sm-2 col-form-label">Nama</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputNama" name="nama_admin" required>
             </div>
             </div>
             <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword">
+                <input type="password" class="form-control" id="inputPassword" name="password" required>
             </div>
             </div>
         </div>
-        <p>sudah punya akun? <a href="/admin/login">Login</a></p>
-        <button type="submit" class="btn btn-primary">Daftar</button>
+        <p>sudah punya akun? <a href="{{url('/admin/login')}}">Login</a></p>
+        <button type="submit" class="btn btn-primary" name="btn_daftar">Daftar</button>
+        </form>
     </div>
 </body>
 </html>
