@@ -9,10 +9,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Illuminate\Notifications\Notifiable;
 
-class Admin extends Authenticatable
+class Admin extends Authenticatable //mengikutkan fila authenticatable untuk fitur auth
 {
     use HasFactory;
-    use Notifiable;
+    use Notifiable; // trait untuk notifikasi
 
     protected $table = 'admin'; //nama table di database
     protected $fillable=[ //kolom yang akan diisi
@@ -21,7 +21,7 @@ class Admin extends Authenticatable
         'password',
     ];
 
-    protected $hidden = [
+    protected $hidden = [ //data yg akan disembunykan
         'password',
         'remember_token',
     ];

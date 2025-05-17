@@ -37,10 +37,9 @@ Route::get('/admin/login', [AuthController::class, 'showLogin']);//menampilkan f
 Route::post('/admin/login', [AuthController::class, 'login']);//proses authentifikasi
 
 //logout
-Route::get('/admin/logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::get('/admin/logout', [AuthController::class, 'logout'])->middleware('auth:admin');
 
-Route::get('/admin/dashboard', function() {
-    return view('admin.dashboard'); // atau controller dashboard Anda
-})->middleware('auth');
 //dashboard
-// Route::get('/admin/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/admin/dashboard', function() {
+    return view('admin.dashboard');
+})->middleware('auth:admin'); //middleware untuk proteksi route

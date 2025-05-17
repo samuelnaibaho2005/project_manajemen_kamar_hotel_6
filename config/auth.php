@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [ //guard khusus admin
+            'driver' => 'session', //mengguunakan session untuk autentifikasi
+            'provider' => 'admins', //menggunakan provider admins
+        ],
     ],
 
     /*
@@ -64,11 +68,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'admins' => [ //provider untuk admin
+            'driver' => 'eloquent', // menggunakan eloquent ORm
+            'model' => App\Models\Admin::class, // model admin yg digunakan
+        ],
     ],
 
     /*

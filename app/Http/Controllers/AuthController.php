@@ -36,22 +36,25 @@ class AuthController extends Controller
 
     //proses login
     public function login(Request $request){
-        $credentials = $request->validate([
-            'email'=>'required',
-            'password'=>'required|password',
+        $credentials = $request->validate([ 
+            'email'=>'required', //validasi email dan password bersifat yg wajib
+            'password'=>'required',
         ]);
 
         $admin = Admin::where('email',$credentials['email'])->first();
 
-        
-
-        if($admin && $credentials['password'] === $admin->password){
-            Auth::login($admin);
-            return redirect('/dashboard');//mengarah ke dashboard
+        // Menggunakan Hash::check untuk membandingkan password
+        if($admin && Hash::check($credentials['password'], $admin->password)){
+            Auth::guard('admin')->login($admin);
+            return redirect('/admin/dashboard');
         }
 
-        return back() -> withErrors([
+        return back()->withErrors([
             'login_gagal' => 'Email atau Password anda salah',
         ]);
+    }
+    public function logout() {
+        Auth::guard('admin')->logout();
+        return redirect('/admin/login');
     }
 }
