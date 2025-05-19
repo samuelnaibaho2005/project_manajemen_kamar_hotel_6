@@ -4,6 +4,7 @@ use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +44,6 @@ Route::get('/admin/logout', [AuthController::class, 'logout'])->middleware('auth
 Route::get('/admin/dashboard', function() {
     return view('admin.dashboard');
 })->middleware('auth:admin'); //middleware untuk proteksi route
+
+//admin
+Route::get('/admin/dataAdmin', [AdminController::class, 'index'])->name('admin.index');

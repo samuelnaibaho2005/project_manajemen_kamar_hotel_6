@@ -17,7 +17,7 @@
         <div class="card-body">
             <h5 class="card-title"><i class="bi bi-person-vcard" style="font-size: 2rem; "></i> Data Admin</h5>
                 <p class="card-text">Data seluruh admin yang sudah mendaftar</p>
-                <a href="#" class="btn btn-primary">Data Admin</a>
+                <a href="{{ url('/admin/dataAdmin') }}" class="btn btn-primary">Data Admin</a>
         </div>
     </div>
     <div class="card con" style="width: 18rem;">
@@ -31,7 +31,7 @@
         <div class="card-body">
             <h5 class="card-title"><i class="bi bi-card-checklist" style="font-size: 2rem; "></i></i> Data Kamar</h5>
                 <p class="card-text">Untuk mengelola kamar pada hotel</p>
-                <a href="#" class="btn btn-primary">Data Kamar</a>
+                <a href="{{ url('/admin/dataAdmin') }}" class="btn btn-primary">Data Kamar</a>
         </div>
     </div>
     </div>
