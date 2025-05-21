@@ -14,16 +14,16 @@
             <a class="navbar-brand" href="/admin/dashboard"><strong>Hotel Manajemen</strong></a>
             <ul class="navbar-nav menuSet gap-3 flex-row">
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/dashboard">Dashboard</a>
+                    <a class="nav-link" href="{{ url('/admin/dashboard') }}">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/dashboard">Admin</a>
+                    <a class="nav-link" href="{{ url('/admin/dataAdmin') }}">Admin</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/kamar">Kamar</a>
+                    <a class="nav-link" href="{{ url('/admin/dataKamar') }}">Kamar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/reservasi">Reservasi</a>
+                    <a class="nav-link" href="{{ url('/admin/dataReservasi') }}">Reservasi</a>
                 </li>
             </ul>
             <div class="log">

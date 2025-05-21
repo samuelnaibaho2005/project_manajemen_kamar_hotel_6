@@ -1,7 +1,7 @@
 @include('layouts.header')
     <div class="row">
         <div class="col-md-12">
-            <h1 class="mb-4"><center>Selamat Datang di Dashboard Admin</center></h1>
+            <h1 class="mb-4"><center>Selamat Datang {{ Auth::user()->nama_admin }}</center></h1>
             <div class="card">
                 <div class="card-body con">
                     <p>Disini admin bertugas untuk melakukan membantu tamu dalam pemesanan kamar.
@@ -24,14 +24,14 @@
         <div class="card-body">
             <h5 class="card-title"><i class="bi bi-building-add" style="font-size: 2rem; "></i></i> Reservasi</h5>
                 <p class="card-text">Membuat reservasi kamar untuk tamu</p>
-                <a href="#" class="btn btn-primary">Reservasi</a>
+                <a href="{{ url('/admin/dataReservasi') }}" class="btn btn-primary">Reservasi</a>
         </div>
     </div>
     <div class="card con" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title"><i class="bi bi-card-checklist" style="font-size: 2rem; "></i></i> Data Kamar</h5>
                 <p class="card-text">Untuk mengelola kamar pada hotel</p>
-                <a href="{{ url('/admin/dataAdmin') }}" class="btn btn-primary">Data Kamar</a>
+                <a href="{{ url('/admin/dataKamar') }}" class="btn btn-primary">Data Kamar</a>
         </div>
     </div>
     </div>
