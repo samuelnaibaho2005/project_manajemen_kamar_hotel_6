@@ -47,6 +47,14 @@ Route::get('/admin/dashboard', function() {
 
 //admin
 Route::get('/admin/dataAdmin', [AdminController::class, 'index'])->name('admin.index');
+
 //update data admin
 Route::get('/admin/update/{id}',[AdminController::class, 'update'])->name('admin.update');
 Route::put('/admin/update/{id}',[AdminController::class, 'update'])->name('admin.update');
+
+//hapus data admin
+Route::delete('/admin/delete/{id}', [AdminController::class, 'destroy']);
+
+
+//data kamar
+Route::get('/kamar/dataKamar', [AdminController::class, 'index'])->name('kamar.index');

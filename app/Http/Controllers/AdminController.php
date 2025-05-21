@@ -33,4 +33,12 @@ class AdminController extends Controller
 
         return redirect('/admin/dataAdmin')->with('success', 'Data admin berhasil diperbarui');
     }
+
+        public function destroy($id){
+            $admin = Admin::findOrFail($id); //cari admin berdasarkan id
+            $admin->delete(); //hapus datanya
+        
+            return redirect('/admin/dataAdmin')->with('success', 'Data admin berhasil dihapus');
+        }
+
 }

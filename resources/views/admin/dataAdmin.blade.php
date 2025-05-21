@@ -23,7 +23,12 @@
                         data-id="{{ $admin->id }}"
                         data-nama="{{ $admin -> nama_admin }}"
                         data-email="{{ $admin -> email }}">Edit <i class="bi bi-pencil-square"></i></a>
-                        <a href="#" class="btn btn-danger btn-sm">Hapus <i class="bi bi-trash"></i></a>
+                        <form action="{{ url('/admin/delete/'.$admin->id) }}" method="POST" style="display: inline;">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus admin ini?')">Hapus <i class="bi bi-trash"></i></button>
+                        </form>
+
                     </td>
                 </tr>
             @endforeach
@@ -31,7 +36,6 @@
     </table>
 
     <!-- Modal Edit -->
-     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button> -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalAdmin" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
