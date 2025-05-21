@@ -14,11 +14,11 @@ class AdminController extends Controller
     //edit
     public function edit($id){
         $admin = Admin::findOrFail($id); //mencari data admin berdasarkan id, atau gagal menemukannya
-        return view('admin.editDataAdmin', compact('admin')); //mengirim dalam ke edit.blade
+        return view('admin.dataAdmin', compact('admin')); //mengirim dalam ke edit.blade
     }
 
     //untuk update data admin
-    public function update(Request $request, $id){
+    public function update(Request $request, $id){ //Request $request untuk menangkap data admin dari form
         $request->validate([
             'email'=>'required',
             'nama_admin'=> 'required',
@@ -28,7 +28,7 @@ class AdminController extends Controller
 
         //update date
         $admin->email=$request->email;
-        $admin->nama_admin=$request->nama_admin;
+        $admin->nama_admin=$request->nama_admin; 
         $admin->save();//menyimpan perubahan    
 
         return redirect('/admin/dataAdmin')->with('success', 'Data admin berhasil diperbarui');
