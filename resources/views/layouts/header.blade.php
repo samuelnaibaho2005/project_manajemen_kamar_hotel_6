@@ -20,10 +20,10 @@
                     <a class="nav-link" href="{{ url('/admin/dataAdmin') }}">Admin</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/admin/dataKamar') }}">Kamar</a>
+                    <a class="nav-link" href="{{ url('/reservasi/dataReservasi') }}">Reservasi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/admin/dataReservasi') }}">Reservasi</a>
+                    <a class="nav-link" href="{{ url('/kamar/dataKamar') }}">Kamar</a>
                 </li>
             </ul>
             <div class="log">

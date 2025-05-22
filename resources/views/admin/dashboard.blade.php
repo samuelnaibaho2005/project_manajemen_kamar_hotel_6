@@ -24,14 +24,14 @@
         <div class="card-body">
             <h5 class="card-title"><i class="bi bi-building-add" style="font-size: 2rem; "></i></i> Reservasi</h5>
                 <p class="card-text">Membuat reservasi kamar untuk tamu</p>
-                <a href="{{ url('/admin/dataReservasi') }}" class="btn btn-primary">Reservasi</a>
+                <a href="{{ url('/reservasi/dataReservasi') }}" class="btn btn-primary">Reservasi</a>
         </div>
     </div>
     <div class="card con" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title"><i class="bi bi-card-checklist" style="font-size: 2rem; "></i></i> Data Kamar</h5>
                 <p class="card-text">Untuk mengelola kamar pada hotel</p>
-                <a href="{{ url('/admin/dataKamar') }}" class="btn btn-primary">Data Kamar</a>
+                <a href="{{ url('/kamar/dataKamar') }}" class="btn btn-primary">Data Kamar</a>
         </div>
     </div>
     </div>

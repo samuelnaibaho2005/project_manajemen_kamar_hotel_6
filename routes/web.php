@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KamarController;
+
+// use App\Http\Controllers\KamarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +37,7 @@ Route::get('/admin/registrasi', [AuthController::class, 'showRegister']);//menam
 Route::post('/admin/registrasi', [AuthController::class, 'register']);//menyimpan data dari form
 
 //form login
-Route::get('/admin/login', [AuthController::class, 'showLogin']);//menampilkan form login
+Route::get('/admin/login', [AuthController::class, 'showLogin'])->name('login');//menampilkan form login
 Route::post('/admin/login', [AuthController::class, 'login']);//proses authentifikasi
 
 //logout
@@ -55,6 +58,5 @@ Route::put('/admin/update/{id}',[AdminController::class, 'update'])->name('admin
 //hapus data admin
 Route::delete('/admin/delete/{id}', [AdminController::class, 'destroy']);
 
-
 //data kamar
-Route::get('/kamar/dataKamar', [AdminController::class, 'index'])->name('kamar.index');
+Route::get('/kamar/dataKamar', [KamarController::class, 'index'])->name('kamar');
