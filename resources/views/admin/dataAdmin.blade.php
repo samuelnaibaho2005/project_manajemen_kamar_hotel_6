@@ -15,7 +15,7 @@
         <tbody>
             @foreach ($admin as $index => $admin)
                 <tr>
-                    <td>{{ $admin->id }}</td>
+                    <td>A-{{ $admin->id }}</td>
                     <td>{{ $admin->nama_admin }}</td>
                     <td>{{ $admin->email }}</td>
                     <td>
@@ -35,7 +35,7 @@
         </tbody>
     </table>
 
-    <!-- Modal Edit -->
+<!-- Modal Edit -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalAdmin" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

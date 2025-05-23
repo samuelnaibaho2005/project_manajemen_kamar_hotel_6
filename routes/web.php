@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KamarController;
+use App\Http\Controllers\ReservasiController;
 
 // use App\Http\Controllers\KamarController;
 
@@ -60,3 +61,12 @@ Route::delete('/admin/delete/{id}', [AdminController::class, 'destroy']);
 
 //data kamar
 Route::get('/kamar/dataKamar', [KamarController::class, 'index'])->name('kamar');
+//edit data kamar
+Route::put('kamar/update/{id}', [KamarController::class. 'update'])->name('kamar.update');
+//tambah data kamar
+Route::post('/kamar/store', [KamarController::class, 'store'])->name('kamar.store');
+//hapus data kamar
+Route::delete('/kamar/delete/{id}', [KamarController::class, 'destroy']);
+
+//data reservasi
+Route::get('/reservasi/dataReservasi', [ReservasiController::class, 'index'])->name('reservasi');
