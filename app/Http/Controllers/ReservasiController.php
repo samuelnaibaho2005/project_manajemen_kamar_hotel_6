@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ReservasiController extends Controller
 {
     public function index(){
-        $reservasis = Reservasi::all();
-        return view ('reservasi/dataReservasi', compact('reservasis'));
+        $reservasi = Reservasi::all();
+        return view ('reservasi/dataReservasi', compact('reservasi'));
     }
 }

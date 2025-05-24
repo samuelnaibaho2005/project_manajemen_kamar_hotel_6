@@ -120,6 +120,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        @foreach ($kamars as $kamar)      
         <form class="editForm" action="{{ route('kamar.update', $kamar->id) }} " id="editForm" method="POST">
         @csrf
         @method ('PUT')
@@ -164,6 +165,7 @@
             <button type="submit" id="update" class="btn btn-primary">Update</button>
           </div>
         </form>
+        @endforeach
       </div>
     </div>
   </div>
