@@ -62,11 +62,15 @@ Route::delete('/admin/delete/{id}', [AdminController::class, 'destroy']);
 //data kamar
 Route::get('/kamar/dataKamar', [KamarController::class, 'index'])->name('kamar');
 //edit data kamar
-Route::put('kamar/update/{id}', [KamarController::class. 'update'])->name('kamar.update');
+Route::put('kamar/update/{id_kamar}', [KamarController::class, 'update'])->name('kamar.update');
 //tambah data kamar
 Route::post('/kamar/store', [KamarController::class, 'store'])->name('kamar.store');
 //hapus data kamar
-Route::delete('/kamar/delete/{id}', [KamarController::class, 'destroy']);
+Route::delete('/kamar/delete/{id_kamar}', [KamarController::class, 'destroy']);
 
 //data reservasi
 Route::get('/reservasi/dataReservasi', [ReservasiController::class, 'index'])->name('reservasi');
+//reservasi store
+Route::get('/reservasi/store', [ReservasiController::class, 'store'])->name('reservasi.store');
+//data kamar di reservasi 
+Route::get('/reservasi/dataReservasi', [ReservasiController::class, 'index'])->name('kamars');

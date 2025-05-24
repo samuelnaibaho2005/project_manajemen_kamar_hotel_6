@@ -9,7 +9,7 @@
 <table class="table table-striped table-hover">
     <thead>
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">ID Kamar</th>
       <th scope="col">No Kamar</th>
       <th scope="col">Lantai</th>
       <th scope="col">Jumlah Tempat Tidur</th>
@@ -22,7 +22,7 @@
   <tbody>
     @foreach ($kamars as $index=>$kamar)    
     <tr>
-      <td>K-{{ $kamar->id }}</td>
+      <td>K-{{ $kamar->id_kamar }}</td>
       <td>{{ $kamar->no_kamar }}</td>
       <td>Lantai {{ $kamar->lantai_kamar }}</td>
       <td><center>{{ $kamar->jlh_bed }}</center></td>
@@ -30,19 +30,19 @@
       <td>Rp{{ number_format($kamar->harga_perhari, 0, ',', '.')}}</td>
       <td>{{ $kamar->status_kamar }}</td>
       <td>
-        <a href="{{ url('/kamar/editDataKamar/'.$kamar->id) }}" class="btn edit-btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal"
-                        data-id="{{ $kamar->id }}"
+        <a href="{{ url('/kamar/editDataKamar/'.$kamar->id_kamar) }}" class="btn edit-btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal"
+                        data-id_kamar="{{ $kamar->id_kamar }}"
                         data-no_kamar="{{ $kamar -> no_kamar }}"
                         data-lantai_kamar="{{ $kamar -> lantai_kamar }}"
                         data-jlh_bed="{{ $kamar -> jlh_bed }}"
                         data-kelas_kamar="{{ $kamar -> kelas_kamar }}"
                         data-harga_perhari="{{ $kamar -> harga_perhari }}"
                         data-status_kamar="{{ $kamar -> status_kamar }}">Edit <i class="bi bi-pencil-square"></i></a>
-                        <form action="{{ url('/kamar/delete/'.$kamar->id) }}" method="POST" style="display: inline;">
-                          @csrf
-                          @method('DELETE')
-                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus kamar ini?')">Hapus <i class="bi bi-trash"></i></button>
-                        </form>
+        <form action="{{ url('/kamar/delete/'.$kamar->id_kamar) }}" method="POST" style="display: inline;">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus kamar ini?')">Hapus <i class="bi bi-trash"></i></button>
+        </form>
       </td>
     </tr>
     @endforeach
@@ -61,7 +61,7 @@
           </div>
           <div class="modal-body">
             <div>
-              <input type="hidden" class="form-control" id="id">
+              <input type="hidden" class="form-control" id="id_kamar">
             </div>
             <div class="mb-3">
                 <label for="no_kamar" class="col-form-label"><strong>No Kamar</strong></label>
@@ -120,21 +120,19 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        @foreach ($kamars as $kamar)      
-        <form class="editForm" action="{{ route('kamar.update', $kamar->id) }} " id="editForm" method="POST">
-        @csrf
-        @method ('PUT')
+        <form class="editForm" id="editForm" method="POST">
+          @csrf
+          @method('PUT')
           <div>
-            <input type="hidden" class="form-control" id="id">
+            <input type="hidden" class="form-control" id="id_kamar" name="id_kamar">
           </div>
           <div class="mb-3">
             <label for="no_kamar" class="col-form-label">No Kamar</label>
-            <input type="no_kamar" class="form-control" id="no_kamar" name="no_kamar" required>
+            <input type="text" class="form-control" id="no_kamar" name="no_kamar" required>
           </div>
           <label for="lantai_kamar" class="col-form-label">Lantai Kamar</label>
           <select class="form-select" aria-label="Default select example" name="lantai_kamar" id="lantai_kamar">
-            <option selected>Pilih lantai..</option>
-            <option value="1">Lantai 1</option>
+            <option selected value="1">Lantai 1</option>
             <option value="2">Lantai 2</option>
             <option value="3">Lantai 3</option>
             <option value="4">Lantai 4</option>
@@ -156,16 +154,14 @@
           </div>
           <label for="status_kamar" class="col-form-label">Status Kamar</label>
           <select class="form-select" aria-label="Default select example" name="status_kamar" id="status_kamar">
-            <option selected>Pilih status..</option>
             <option value="Sudah Dibooking">Sudah Dibooking</option>
-            <option value="Belum Dibooking">Belum Dibooking</option>
+            <option value="Belum Dibooking" selected>Belum Dibooking</option>
           </select>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
             <button type="submit" id="update" class="btn btn-primary">Update</button>
           </div>
         </form>
-        @endforeach
       </div>
     </div>
   </div>
@@ -173,33 +169,34 @@
 
 <!-- script js -->
 <script>
-// untuk edit data kamar
 document.addEventListener('DOMContentLoaded', function () {
     const editButtons = document.querySelectorAll('.edit-btn');
     const editForm = document.getElementById('editForm');
 
     editButtons.forEach(button => {
         button.addEventListener('click', function () {
-            const id = this.getAttribute('data-id');
+            const id_kamar = this.getAttribute('data-id_kamar');
             const no_kamar = this.getAttribute('data-no_kamar');
+            const lantai_kamar = this.getAttribute('data-lantai_kamar');
             const jlh_bed = this.getAttribute('data-jlh_bed');
             const kelas_kamar = this.getAttribute('data-kelas_kamar');
             const harga_perhari = this.getAttribute('data-harga_perhari');
             const status_kamar = this.getAttribute('data-status_kamar');
 
+            // Set form action
+            editForm.action = `/kamar/update/${id_kamar}`;
+            
+            // Set form values
+            document.getElementById('id_kamar').value = id_kamar;
             document.getElementById('no_kamar').value = no_kamar;
             document.getElementById('lantai_kamar').value = lantai_kamar;
             document.getElementById('jlh_bed').value = jlh_bed;
             document.getElementById('kelas_kamar').value = kelas_kamar;
             document.getElementById('harga_perhari').value = harga_perhari;
             document.getElementById('status_kamar').value = status_kamar;
-
-            // Ganti action form edit sesuai ID
-            editForm.action = `/kamar/update/${id}`;
         });
     });
 });
-
 </script>
 
 </div>

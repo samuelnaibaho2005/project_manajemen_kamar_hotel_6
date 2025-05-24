@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reservasi', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id_reservasi');
             $table->string('nama_tamu');
             $table->string('no_tlpn');
             $table->integer('jlh_tamu');
@@ -24,7 +24,6 @@ return new class extends Migration
             $table->enum('status_kamar',['Sudah Dibooking','Belum Dibooking']);
             $table->date('tgl_check_in');
             $table->date('tgl_check_out');
-            // $table->timestamps();
         });
     }
 

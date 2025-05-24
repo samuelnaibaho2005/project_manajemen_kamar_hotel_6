@@ -36,8 +36,8 @@ class KamarController extends Controller{
         return redirect()->back()->with('success', 'Data kamar berhasil ditambahkan');
     }
 
-    public function update(Request $request, $id){
-        $kamar = Kamar::findOrFail($id);
+    public function update(Request $request, $id_kamar){
+        $kamar = Kamar::findOrFail($id_kamar);
 
         $kamar->update([
             'no_kamar' => $request->no_kamar,
@@ -50,8 +50,8 @@ class KamarController extends Controller{
         return redirect()->back()->with('success', 'Data kamar berhasil diupdate');
     }
 
-    public function destroy($id){
-        $kamar = Kamar::findOrFail($id); //cari kamar berdasarkan id
+    public function destroy($id_kamar){
+        $kamar = Kamar::findOrFail($id_kamar); //cari kamar berdasarkan id_kamar
         $kamar->delete(); //hapus datanya
     
         return redirect('/kamar/dataKamar')->with('success', 'Data kamar berhasil dihapus');
