@@ -71,6 +71,7 @@ Route::delete('/kamar/delete/{id_kamar}', [KamarController::class, 'destroy']);
 //data reservasi
 Route::get('/reservasi/dataReservasi', [ReservasiController::class, 'index'])->name('reservasi');
 //reservasi store
-Route::get('/reservasi/store', [ReservasiController::class, 'store'])->name('reservasi.store');
-//data kamar di reservasi 
-Route::get('/reservasi/dataReservasi', [ReservasiController::class, 'index'])->name('kamars');
+Route::post('/reservasi/store', [ReservasiController::class, 'store'])->name('reservasi.store');
+//data pesanan reservasi 
+Route::get('/reservasi/pesanan', [ReservasiController::class, 'pesanan'])->name('reservasi.pesanan');
+
