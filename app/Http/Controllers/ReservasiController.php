@@ -29,26 +29,16 @@ public function store(Request $request){
         'harga_perhari' => 'required',
         'status_kamar' => 'required|string',
         'tgl_check_in' => 'required|date',
-        'tgl_check_out' => 'required|date|after_or_equal:tgl_check_in',
-        'total_biaya' => 'required'
+        'tgl_check_out' => 'required|date|after_or_equal:tgl_check_in'
     ]);
-    
-    // Ambil info kamar
-    $kelasHarga = [
-        'A' => 600000,
-        'B' => 450000,
-        'C' => 200000
-    ];
-    
-    // Hitung jumlah hari
-    $start = new \DateTime($request->tgl_check_in);
-    $end = new \DateTime($request->tgl_check_out);
-    $days = $start->diff($end)->days ?: 1;
 
-    // Hitung total
-    $harga_kamar = $kelasHarga[$request->kelas_kamar] ?? 0;
-    $biaya_tamu = $request->jlh_tamu * 50000;
-    $total_biaya = ($harga_kamar + $biaya_tamu) * $days;
+    // Hitung jumlah hari
+    $checkIn = \Carbon\Carbon::parse($request->tgl_check_in);
+    $checkOut = \Carbon\Carbon::parse($request->tgl_check_out);
+    $jumlahHari = $checkOut->diffInDays($checkIn);
+
+    // Hitung total biaya
+    $total_biaya = ($request->harga_perhari + ($request->jlh_tamu * 50000)) * $jumlahHari;
 
     // Simpan reservasi
     $reservasi = Reservasi::create([
@@ -61,7 +51,7 @@ public function store(Request $request){
         'jlh_bed' => $request->jlh_bed,
         'kelas_kamar' => $request->kelas_kamar,
         'harga_perhari' => $request->harga_perhari,
-        'status_kamar' => $request->status_kamar,
+        'status_kamar' => 'Sudah Dibooking',
         'tgl_check_in' => $request->tgl_check_in,
         'tgl_check_out' => $request->tgl_check_out,
         'total_biaya' => $total_biaya
@@ -73,9 +63,17 @@ public function store(Request $request){
 
 }
 
-public function pesanan() {
-    $reservasi = Reservasi::with('kamar')->latest()->get();
-    return view('reservasi.pesanan', compact('reservasi'));
-}
+    public function pesanan() {
+        $reservasi = Reservasi::with('kamar')->latest()->get();
+        return view('reservasi.pesanan', compact('reservasi'));
+    }
 
+    public function destroy($id_reservasi) {
+        $reservasi = Reservasi::find($id_reservasi);
+        if($reservasi) {
+            $reservasi->delete();
+            return redirect()->route('reservasi.pesanan')->with('success', 'Data reservasi berhasil dihapus');
+        }
+        return redirect()->route('reservasi.pesanan')->with('error', 'Data reservasi tidak ditemukan');
+    }
 }

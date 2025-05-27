@@ -70,8 +70,9 @@ Route::delete('/kamar/delete/{id_kamar}', [KamarController::class, 'destroy']);
 
 //data reservasi
 Route::get('/reservasi/dataReservasi', [ReservasiController::class, 'index'])->name('reservasi');
-//reservasi store
+// //reservasi store
 Route::post('/reservasi/store', [ReservasiController::class, 'store'])->name('reservasi.store');
-//data pesanan reservasi 
+// //data pesanan reservasi 
 Route::get('/reservasi/pesanan', [ReservasiController::class, 'pesanan'])->name('reservasi.pesanan');
-
+Route::delete('/reservasi/delete/{id_reservasi}', [ReservasiController::class, 'destroy'])->name('reservasi.delete');
+Route::get('/reservasi', [ReservasiController::class, 'riwayat']);
