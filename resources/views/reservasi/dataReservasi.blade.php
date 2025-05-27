@@ -12,7 +12,7 @@
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div class="row">
                             <div>
-                                <strong><i class="bi bi-houses"></i> Nomor Kamar : {{ $kamar->no_kamar }}</strong> <br>
+                                <strong><i class="bi bi-houses"></i> No. Kamar : {{ $kamar->no_kamar }}</strong> <br>
                                 <strong><i class="bi bi-award-fill"></i> Kelas : {{ $kamar->kelas_kamar }}</strong><br>
                                 <strong><i class="bi bi-cart4"></i> Status : {{ $kamar->status_kamar }}</strong>
                             </div>

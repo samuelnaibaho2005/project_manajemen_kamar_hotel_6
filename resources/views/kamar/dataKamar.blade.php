@@ -41,7 +41,7 @@
         <form action="{{ url('/kamar/delete/'.$kamar->id_kamar) }}" method="POST" style="display: inline;">
           @csrf
           @method('DELETE')
-          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus kamar ini?')">Hapus <i class="bi bi-trash"></i></button>
+          <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Yakin ingin menghapus kamar ini?')">Hapus <i class="bi bi-trash"></i></button>
         </form>
       </td>
     </tr>
